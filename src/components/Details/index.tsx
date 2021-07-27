@@ -140,10 +140,10 @@ const Details: React.FC<DetailsProps> = ({ visible, item, closeModal }) => {
 
               <Description>
                 {item.description
-                  || 'Fictional character that appears in American comics published by Marvel'}
+                  || 'Personagem de ficção que aparece em quadrinhos americanos publicados pela Marvel'}
               </Description>
               <NavButton onPress={() => handleNavigation(item)}>
-                <NavButtonText>View more</NavButtonText>
+                <NavButtonText>Ver mais</NavButtonText>
               </NavButton>
             </>
           )}
