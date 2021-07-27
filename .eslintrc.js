@@ -27,5 +27,10 @@ module.exports = {
     'import/extensions': 'off',
     'no-use-before-define': 'off',
     'import/no-unresolved': 'off',
+    'global-require': 0,
+    'no-param-reassign': [2, { props: false }],
+  },
+  globals: {
+    __DEV__: true,
   },
 };
