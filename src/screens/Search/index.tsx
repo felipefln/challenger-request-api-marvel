@@ -7,6 +7,7 @@ import api from '../../services/api';
 import Character from '../../components/Character';
 import Details from '../../components/Details';
 import Input from '../../components/Input';
+import Loading from '../../components/Loading';
 import colors from '../../styles/Colors';
 import {
   Container,
@@ -138,6 +139,7 @@ const Search: React.FC = () => {
           closeModal={closeModalDetails}
         />
       </Container>
+      {loading && <Loading />}
     </>
   );
 };
