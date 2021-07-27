@@ -2,20 +2,17 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { FlatList, StatusBar } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/AntDesign';
 import api from '../../services/api';
 import Character from '../../components/Character';
 import Details from '../../components/Details';
 import Input from '../../components/Input';
 import Loading from '../../components/Loading';
-import colors from '../../styles/Colors';
 import {
   Container,
   NavButton,
   NavButtonText,
   SectionRow,
   SectionTitle,
-  BackButton,
   Header,
   Logo,
 } from './styles';
@@ -95,10 +92,6 @@ const Search: React.FC = () => {
   const handleNavigate = useCallback(() => {
     navigation.navigate('Favorites');
   }, [navigation]);
-
-  // const handleGoBack = useCallback(() => {
-  //   navigation.goBack();
-  // }, [navigation]);
 
   return (
     <>

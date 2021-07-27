@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { FlatList, StatusBar } from 'react-native';
+import { FlatList, StatusBar, Share } from 'react-native';
 import { useStore } from 'react-redux';
 
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
-import { Container, SectionTitle, BackButton } from './styles';
+import { Container, SectionTitle, BackButton, NavButton, NavButtonText } from './styles';
 import Character from '../../components/Character';
 import Details from '../../components/Details';
 import Loading from '../../components/Loading';
@@ -78,6 +78,24 @@ const Favorites: React.FC = () => {
     navigation.goBack();
   }, []);
 
+  const onShare = async (favorites:any) => {
+    const favoritesNames = favorites.map((favorito: { name: any; }) => favorito.name)
+
+    try {
+      const result = await Share.share({message: `${favoritesNames}`});
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
   return (
     <>
       <Container>
@@ -105,11 +123,15 @@ const Favorites: React.FC = () => {
           onEndReached={onEndReached}
           onEndReachedThreshold={0.1}
         />
+
         <Details
           visible={modalDetails}
           item={character}
           closeModal={closeModalDetails}
         />
+        <NavButton onPress={() => onShare(characteres)}>
+          <NavButtonText>Compartilhar favoritos</NavButtonText>
+        </NavButton>
       </Container>
       {loading && <Loading />}
     </>

@@ -6,7 +6,7 @@ export const Container = styled.View`
   flex: 1;
   background: ${colors.background};
   padding-top: ${Platform.OS === 'ios' ? 60 : 20}px;
-  padding-bottom: ${Platform.OS === 'ios' ? 40 : 0}px;
+  padding-bottom: ${Platform.OS === 'ios' ? 40 : 20}px;
   padding-left: 20px;
   padding-right: 20px;
 `;
@@ -43,4 +43,20 @@ export const BackButton = styled.TouchableOpacity`
   position: absolute;
   top: ${Platform.OS === 'ios' ? 50 : 10}px;
   left: 20px;
+`;
+
+export const NavButton = styled.TouchableOpacity`
+  background: ${colors.primary};
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 80%;
+  margin-top: 30px;
+  border-radius: 30px;
+  align-self: center;
+`;
+
+export const NavButtonText = styled.Text`
+  font-size: 16px;
+  color: ${colors.white};
 `;
