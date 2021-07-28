@@ -4,7 +4,9 @@ import { useStore } from 'react-redux';
 
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
-import { Container, SectionTitle, BackButton, NavButton, NavButtonText } from './styles';
+import {
+  Container, SectionTitle, BackButton, NavButton, NavButtonText,
+} from './styles';
 import Character from '../../components/Character';
 import Details from '../../components/Details';
 import Loading from '../../components/Loading';
@@ -79,10 +81,10 @@ const Favorites: React.FC = () => {
   }, []);
 
   const onShare = async (favorites:any) => {
-    const favoritesNames = favorites.map((favorito: { name: any; }) => favorito.name)
+    const favoritesNames = favorites.map((favorito: { name: string; }) => favorito.name);
 
     try {
-      const result = await Share.share({message: `${favoritesNames}`});
+      const result = await Share.share({ message: `${favoritesNames}` });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
         } else {
@@ -92,7 +94,7 @@ const Favorites: React.FC = () => {
         // dismissed
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
